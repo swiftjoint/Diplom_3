@@ -9,7 +9,7 @@ class PwdPage(BasePage):
     @allure.step('На главной странице, кликаем на кнопку "Войти в аккаунт"')
     @allure.step('На странице входа, кликаем на кнопку "Восстановить пароль"')
     def go_to_page_pwd_recovery(self):
-        self.click_to_element(LocatorsHome.BTN_LOGIN)
+        self.click_to_element(LocatorsHome.BTN_LOGIN_HOME)
         self.click_to_element(LocatorsPwd.BTN_RESET_PWD)
 
     @allure.step('На странице восстановления пароля, вводим "email" и кликаем на кнопку "Восстановить"')
