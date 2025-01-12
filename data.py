@@ -1,6 +1,7 @@
 class UrlPage:
     PAGE_URL = 'https://stellarburgers.nomoreparties.site/'
     PAGE_URL_LOGIN = 'https://stellarburgers.nomoreparties.site/login'
+    PAGE_URL_TAPE_ORDER = 'https://stellarburgers.nomoreparties.site/feed'
 
 
 class ExpectedText:

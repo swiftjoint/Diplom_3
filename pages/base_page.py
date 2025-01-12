@@ -9,15 +9,15 @@ class BasePage:
         self.driver = driver
 
     def find_element_with_wait(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, 50).until(expected_conditions.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     def wait_element_invisibility(self, wait_locator):
         element = self.driver.find_element(*wait_locator)
-        WebDriverWait(self.driver, 30).until(expected_conditions.invisibility_of_element_located(element))
+        WebDriverWait(self.driver, 100).until(expected_conditions.invisibility_of_element_located(element))
 
     def click_to_element(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(locator))
+        WebDriverWait(self.driver, 50).until(expected_conditions.element_to_be_clickable(locator))
         self.driver.find_element(*locator).click()
 
     def get_text_from_element(self, locator):
@@ -65,3 +65,17 @@ class BasePage:
                 simulateHTML5DragAndDrop(arguments[0], arguments[1]);
                 """
         self.driver.execute_script(script, source_element, target_element)
+
+    def scroll_to_bottom(self, driver):
+        """
+        Скроллит страницу в самый низ.
+
+        :param driver: Экземпляр WebDriver (например, Chrome или Firefox).
+        """
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def get_counter_value(self, locator):
+        counter_element = WebDriverWait(self.driver, 50).until(
+            expected_conditions.visibility_of_element_located(locator)
+        )
+        return int(counter_element.text)

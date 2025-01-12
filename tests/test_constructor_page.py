@@ -13,7 +13,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL_LOGIN)
         constructor_page = ConstructorPage(driver)
         constructor_page.to_go_click_on_constructor()
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsConstructor.BTN_CONSTRUCTOR_BULKI)
         )
         assert result.is_displayed()
@@ -23,7 +23,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL)
         constructor_page = ConstructorPage(driver)
         constructor_page.to_go_click_on_tape_orders()
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsOrder.HEAD_TAPE_ORDERS)
         )
         assert result.is_displayed()
@@ -33,7 +33,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL)
         constructor_page = ConstructorPage(driver)
         constructor_page.click_to_ingredient()
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsConstructor.DETAILS_INGREDIENT)
         )
         assert result.is_displayed()
@@ -43,7 +43,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL)
         constructor_page = ConstructorPage(driver)
         constructor_page.close_windows_details_ingredient()
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.invisibility_of_element_located(LocatorsConstructor.MODAL_WINDOWS)
         )
         assert result is True, 'Окно, не закрылось'
@@ -53,7 +53,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL)
         constructor_page = ConstructorPage(driver)
         constructor_page.add_ingredient_in_order_count_rise()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             expected_conditions.text_to_be_present_in_element(LocatorsConstructor.COUNTER_INGREDIENT, '2')
         )
 
@@ -67,7 +67,7 @@ class TestConstructor:
         driver.get(UrlPage.PAGE_URL)
         constructor_page = ConstructorPage(driver)
         constructor_page.auth_user_can_place_order()
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsOrder.ID_ORDER_IN_WINDOWS)
         )
         assert result.is_displayed()

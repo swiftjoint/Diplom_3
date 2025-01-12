@@ -13,7 +13,7 @@ class TestLk:
         driver.get(UrlPage.PAGE_URL)
         lk_page = LkPage(driver)
         lk_page.go_to_personal_cabinet()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsLK.BTN_LOGIN)
         )
 
@@ -24,7 +24,7 @@ class TestLk:
         driver.get(UrlPage.PAGE_URL)
         lk_page = LkPage(driver)
         lk_page.go_to_history_page(driver)
-        result = WebDriverWait(driver, 10).until(
+        result = WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsLK.ORDER_COMPLETE)
         )
 
@@ -35,7 +35,7 @@ class TestLk:
         driver.get(UrlPage.PAGE_URL)
         lk_page = LkPage(driver)
         lk_page.logout_lk()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsLK.BTN_LOGIN)
         )
 

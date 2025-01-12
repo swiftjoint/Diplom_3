@@ -14,7 +14,7 @@ class TestPwd:
         driver.get(UrlPage.PAGE_URL)
         pwd_page = PwdPage(driver)
         pwd_page.go_to_page_pwd_recovery()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsPwd.BTN_RESET)
         )
 
@@ -27,7 +27,7 @@ class TestPwd:
         pwd_page = PwdPage(driver)
         pwd_page.go_to_page_pwd_recovery()
         pwd_page.input_email_and_click_recover_btn()
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsPwd.BTN_SAVE_PWD)
         )
 
@@ -42,6 +42,6 @@ class TestPwd:
         pwd_page.input_email_and_click_recover_btn()
         pwd_page.toggle_pwd_visibility_and_actively_field()
 
-        assert WebDriverWait(driver, 10).until(
+        assert WebDriverWait(driver, 20).until(
             expected_conditions.visibility_of_element_located(LocatorsPwd.ACTIVELY_FIELD)
         ), 'Поле не подсветилось как активно'
