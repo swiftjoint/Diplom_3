@@ -12,10 +12,14 @@ class OrderPage(BasePage):
     def click_to_order_open_win_with_details(self):
         self.click_to_element(LocatorsOrder.ID_IN_TAPE_ORDERS)
 
+    @allure.step('Проверяем, что текст "Состав" отображается')
+    def is_text_structure_visible(self):
+        return self.is_element_visible(LocatorsOrder.WINDOWS_DETAILS_ORDERS)
+
     @allure.step('Входим в учетную запись')
     @allure.step('Переходим в историю заказов и забираем id заказа')
     @allure.step('Переходим в ленту заказов, и ищем тот id который мы забрали из истории заказов')
-    def show_order_history_in_tape_orders(self, driver):
+    def show_order_history_in_tape_orders(self):
         self.click_to_element(LocatorsHome.BTN_LOGIN_HOME)
         self.add_text_to_element(LocatorsLK.EMAIL_INPUT_XPATH, DataUser.LOGIN)
         self.add_text_to_element(LocatorsLK.PWD_INPUT_XPATH, DataUser.PWD)
@@ -33,7 +37,7 @@ class OrderPage(BasePage):
             self.wait_element_invisibility(LocatorsHome.HIDDEN_ELEMENT)
             self.click_to_element(LocatorsLK.BTN_HISTORY_ORDER)
 
-        self.scroll_to_bottom(driver)
+        self.scroll_to_bottom()
         order_id_in_history = self.get_text_from_element(LocatorsOrder.HARD_ID_ORDER_IN_HISTORY_ORDERS)
         self.click_to_element(LocatorsHome.BTN_TAPE_ORDERS)
         order_id_in_tape = self.get_text_from_element(LocatorsOrder.HARD_ID_ORDER_IN_TAPE_ORDERS)

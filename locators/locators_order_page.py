@@ -13,10 +13,10 @@ class LocatorsOrder:
         By.XPATH, "//p[contains(text(), 'Cостав') and contains(@class, 'text')]"
     )  # Слово "Состав", в окне с деталями о заказе
     HARD_ID_ORDER_IN_HISTORY_ORDERS = (
-        By.XPATH, "//p[contains(text(), '#0168143')]"
+        By.XPATH, "//p[contains(text(), '#0169731')]"
     )  # Конкретный ID заказа, из истории заказов
     HARD_ID_ORDER_IN_TAPE_ORDERS = (
-        By.XPATH, "//p[contains(@class, 'text') and contains(@class, 'text_type_digits-default') and contains(text(), '#0168143')]"
+        By.XPATH, "//p[contains(@class, 'text') and contains(@class, 'text_type_digits-default') and contains(text(), '#0169731')]"
     )  # Конкретный ID заказа, из ленты заказов
     TOTAL_COUNTER_SCORE = (
         By.XPATH,"//p[contains(@class, 'OrderFeed_number__2MbrQ') and contains(@class, 'text') and contains(@class, 'text_type_digits-large')]"

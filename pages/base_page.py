@@ -7,6 +7,7 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(driver, 30)
 
     def find_element_with_wait(self, locator):
         WebDriverWait(self.driver, 50).until(expected_conditions.visibility_of_element_located(locator))
@@ -66,16 +67,23 @@ class BasePage:
                 """
         self.driver.execute_script(script, source_element, target_element)
 
-    def scroll_to_bottom(self, driver):
-        """
-        Скроллит страницу в самый низ.
-
-        :param driver: Экземпляр WebDriver (например, Chrome или Firefox).
-        """
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    def scroll_to_bottom(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     def get_counter_value(self, locator):
         counter_element = WebDriverWait(self.driver, 50).until(
             expected_conditions.visibility_of_element_located(locator)
         )
         return int(counter_element.text)
+
+    def go_to_url(self, url):
+        self.driver.get(url)
+
+    def is_element_visible(self, locator):
+        element = self.find_element_with_wait(locator)
+        return element.is_displayed()
+
+    def wait_element_invisibility_base(self, wait_locator):
+        WebDriverWait(self.driver, 50).until(
+            expected_conditions.invisibility_of_element_located(wait_locator)
+        )
